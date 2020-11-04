@@ -32,6 +32,7 @@ const price = function (options: any) {
         expenses,
         deadline,
         annualInterestRate,
+        monthlyInterestRate,
         administrationTaxesRate,
         insurence,
         gracePeriod,
@@ -56,7 +57,7 @@ const price = function (options: any) {
         let amortizationTotal = 0;
         let interestRateTotal = 0;
         let financedValue = financedAmount + expenses + iofTotalCumulative;
-        let monthTaxesRate = (annualInterestRate / 12) / 100;
+        let monthTaxesRate = monthlyInterestRate ? monthlyInterestRate : (annualInterestRate / 12) / 100;
         let installmentValue = financedValue * (Math.pow(1 + monthTaxesRate, newDeadLine) * monthTaxesRate) / (Math.pow(1 + monthTaxesRate, newDeadLine) - 1)
         let debitBalance = financedValue;
         let daysTotal = 0;
